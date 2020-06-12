@@ -20,3 +20,4 @@ def init_logging(level=logging.INFO):
 
     # Turn off noisy logging
     logging.getLogger("urllib3.connectionpool").setLevel(logging.WARNING)
+    logging.getLogger("sh.command").setLevel(logging.WARNING)
