@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import pathlib
 import cherrypy
 from irrigationpi import config, app, utils
 
@@ -10,6 +10,16 @@ _water_pump_rf_outlet = app.RFOutlet('water-pump',
                                      app.RFCodeSender())
 _water_pump_controller = app.RFOutletController(_water_pump_rf_outlet)
 
+root_conf = {
+    '/': {
+        'tools.sessions.on': True,
+        'tools.staticdir.root': pathlib.Path(__file__).parent.absolute()
+    },
+    '/static': {
+        'tools.staticdir.on': True,
+        'tools.staticdir.dir': './static'
+    }
+}
 
 api_conf = {
     '/': {
@@ -25,7 +35,7 @@ api_conf = {
 
 cherrypy.server.socket_host = '0.0.0.0'
 
-cherrypy.tree.mount(app.RootController(), '/')
+cherrypy.tree.mount(app.RootController(), '/', root_conf)
 cherrypy.tree.mount(_water_pump_controller, '/api/water-pump', api_conf)
 
 cherrypy.engine.start()

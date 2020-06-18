@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 class RootController(object):
     @cherrypy.expose
     def index(self):
-        return "Welcome! You just entered wonderland!"
+        return open('index.html')
 
 
 @cherrypy.expose
