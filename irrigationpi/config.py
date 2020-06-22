@@ -4,3 +4,11 @@ rf_outlets_codes = {
 }
 
 water_pump_outlet_codes = rf_outlets_codes[5]
+
+# Details could be found at: https://apscheduler.readthedocs.io/en/latest/modules/triggers/cron.html
+water_pump_cron_settings = {
+    "day": "*",
+    "hour": 8,
+    "minute": 30,
+    "duration": 120,  # in seconds, self-defined config
+}

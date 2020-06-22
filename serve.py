@@ -9,6 +9,8 @@ _water_pump_rf_outlet = app.RFOutlet('water-pump',
                                      config.water_pump_outlet_codes[1],
                                      app.RFCodeSender())
 _water_pump_controller = app.RFOutletController(_water_pump_rf_outlet)
+app.setup_cronjob(_water_pump_rf_outlet, config.water_pump_cron_settings)
+app.scheduler.start()
 
 root_conf = {
     '/': {

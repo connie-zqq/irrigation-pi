@@ -1,10 +1,14 @@
 import logging
 import pathlib
+import time
 import cherrypy
 import sh
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 
 
 logger = logging.getLogger(__name__)
+scheduler = BackgroundScheduler()
 
 
 class RootController(object):
@@ -63,3 +67,17 @@ class RFCodeSender(object):
 
     def send(self, code):
         self._codesender(code)
+
+
+def _turn_on(rf_outlet, duration):
+    logger.info("Turning on the outlet for %s seconds", duration)
+    rf_outlet.on()
+    time.sleep(duration)
+    rf_outlet.off()
+
+
+def setup_cronjob(rf_outlet, cron_settings):
+    cron_settings = cron_settings.copy()
+    duration = cron_settings.pop("duration")
+    cron_trigger = CronTrigger(**cron_settings)
+    scheduler.add_job(_turn_on, cron_trigger, args=(rf_outlet, duration))
