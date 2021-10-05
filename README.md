@@ -1,4 +1,4 @@
-# Raspberry pi controlled smart irrigation system controlled by Raspberry pi 
+# Raspberry pi controlled smart irrigation system
 
 ## Progress
 
