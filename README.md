@@ -1,5 +1,13 @@
 # Raspberry pi controlled smart irrigation system
 
+## Hardware
+
+Raspberry Pi 3, DHT22 sensor, an RF transmitter, a remote-control outlet, a submersible water pump.
+
+## Software stack
+
+Python 3, CherryPy, APScheduler, WiringPi, Adafruit_DHT, ThingSpeak, Twilio.
+
 ## Progress
 
 v.1 - It supports remote control on a web page via REST APIs and has a cron job for periodic irrigation. (May - June, 2020)
@@ -16,10 +24,7 @@ Kudoes to the [433Utils](https://github.com/ninjablocks/433Utils/tree/master/RPi
 
 TODO:  How `RFSniffer` and `codesend` works
 
-TODO:
-- architecture chart
-- hardware list
-- software environment
+
 
 
 
