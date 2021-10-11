@@ -1,4 +1,4 @@
-# Raspberry pi controlled smart irrigation system
+# Raspberry pi controlled smart irrigation system v2.0
 
 ## Hardware
 
